@@ -16,9 +16,9 @@ public class Program {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
+		Scanner scFile = null;
 
 		List<Product> list = new ArrayList<>();
-
 
 		File caminhoArquivo = new File("D:\\ProgramasJava\\out\\summary.txt");
 
@@ -43,8 +43,8 @@ public class Program {
 			for (Product p : list) {
 				productVect[cont] = p.toString();
 				cont++;
-				}
-			
+			}
+
 			boolean sucess = new File(caminhoArquivo + "\\out").mkdir();
 			System.out.println("Diretório criado com sucesso: " + sucess);
 
@@ -52,12 +52,20 @@ public class Program {
 				bw.write(line);
 				bw.newLine();
 			}
+			File fileOut = new File("D:\\ProgramasJava\\out\\summary.txt");
+			scFile = new Scanner(fileOut);
+			
+			while (scFile.hasNextLine() == true) {
+				System.out.println(scFile.nextLine());
+			}
 
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
-
-			sc.close();
+		} finally {
+			if (scFile != null) {
+				sc.close();
+			}
 
 		}
-
-	}}
+	}
+}

@@ -57,9 +57,16 @@ public class Product {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		
+		builder.append("\n|---------------------------------------------------------------|\n");
+		builder.append("PRODUTO:	");
 		builder.append(name);
-		builder.append(", ");
+		builder.append("\nPreço: ");
+		builder.append(" 	R$");
+		builder.append(String.format("%.2f", price));
+		builder.append("\nQuantidade:     ");
+		builder.append(quantity + " unidades\n");
+		builder.append("Subtotal:");
+		builder.append("       R$");
 		builder.append(String.format("%.2f", total));
 		return builder.toString();
 	}
